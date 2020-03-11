@@ -5,39 +5,6 @@ import "./styles.css";
 
 const App = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
-  // const [previewImage, setpreviewImage] = useState();
-
-  // create a previewImage as a side effect, whenever selected file is changed
-  // useEffect(() => {
-  //   if (!selectedFile) {
-  //     setpreviewImage(undefined);
-  //     return;
-  //   }
-
-  //   const objectUrl = URL.createObjectURL(selectedFile);
-  //   setpreviewImage(objectUrl);
-
-  //   console.log("selectedFile: ", selectedFile, "  objectUrl: ", objectUrl);
-
-  //   // free memory when ever this component is unmounted
-  //   return () => URL.revokeObjectURL(objectUrl);
-  // }, [selectedFile]);
-
-  // const handleImageChange = e => {
-  //   e.persist();
-  //   // console.log("handleImageChange...");
-  //   if (e.target.files) {
-  //     const filesArray = Array.from(e.target.files);
-  //     console.log("filesArray: ", filesArray); ///////// log 2
-  //     filesArray.forEach(file => {
-  //       const tempUrl = URL.createObjectURL(file);
-  //       console.log("tempUrl: ", tempUrl); ////// log 3
-  //       // setselectedFiles([...selectedFiles, tempUrl]);
-  //       setSelectedFiles(prevImages => [...prevImages, tempUrl]);
-  //       URL.revokeObjectURL(file); // avoid memory leak
-  //     });
-  //   }
-  // };
 
   // method from: https://stackoverflow.com/a/59661804/2487730
   // I added URL.revokeObjectURL() below..
@@ -62,7 +29,6 @@ const App = () => {
           src={photo}
           alt=""
           key={photo}
-          style={{ height: "25vh", display: "inline-block" }}
         />
       );
     });
@@ -76,13 +42,6 @@ const App = () => {
         <p />
         <hr />
         {renderPhotos(selectedFiles)}
-        {/* {selectedFile && (
-          <img
-            src={previewImage}
-            alt=""
-            style={{ height: "25vh", display: "block" }}
-          />
-        )} */}
       </div>
     </>
   );
