@@ -1,6 +1,6 @@
 // info from https://stackoverflow.com/a/57781164/2487730
 // see also https://stackoverflow.com/a/59661804/2487730
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
 const App = () => {
@@ -13,24 +13,18 @@ const App = () => {
       const filesArray = Array.from(e.target.files).map(file =>
         URL.createObjectURL(file)
       );
-      console.log(filesArray); ///////// log 2
+      console.log("filesArray: ", filesArray);
       setSelectedFiles(prevImages => prevImages.concat(filesArray));
-      const cleanMemory = Array.from(e.target.files).map(
+      Array.from(e.target.files).map(
         file => URL.revokeObjectURL(file) // avoid memory leak
       );
     }
   };
 
   const renderPhotos = source => {
-    console.log(source); ////////log 1
+    console.log("source: ", source);
     return source.map(photo => {
-      return (
-        <img
-          src={photo}
-          alt=""
-          key={photo}
-        />
-      );
+      return <img src={photo} alt="" key={photo} />;
     });
   };
 
